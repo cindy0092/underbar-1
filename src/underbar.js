@@ -62,7 +62,7 @@ var _ = {};
         var item = collection[key];
         iterator(item, key, collection);
       }
-    }
+    };
   };
 
   // Returns the index at which value can be found in the array, or -1 if value
@@ -127,8 +127,6 @@ var _ = {};
       }
     };
 
-    console.log(result);
-
     return result;
   };
 
@@ -138,6 +136,22 @@ var _ = {};
     // map() is a useful primitive iteration function that works a lot
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
+
+    var result = [];
+
+    if (Array.isArray(collection)){
+      for (var key = 0; key < collection.length; key++){
+        var value = collection[key];
+        result.push(iterator(value, key, collection));
+      }
+    } else{
+      for (key in collection){
+        var item = collection[key];
+        result.push(iterator(item, key, collection));
+      }
+    }
+
+    return result;
   };
 
   /*
