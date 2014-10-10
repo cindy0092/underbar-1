@@ -207,9 +207,9 @@ var _ = {};
       result = accumulator;
     }
 
-    for (var i=0; i < collection.length; i++){
-      result = iterator(result, collection[i]);
-    }
+    _.each(collection, function(value){
+      result = iterator(result, value);
+    });
     return result;
   };
 
