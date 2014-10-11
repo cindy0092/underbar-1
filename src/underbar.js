@@ -52,8 +52,9 @@ var _ = {};
   // Note: _.each does not have a return value, but rather simply runs the
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
+    var key;
     if (Array.isArray(collection)){
-      for (var key = 0; key < collection.length; key++){
+      for (key = 0; key < collection.length; key++){
         var value = collection[key];
         iterator(value, key, collection);
       }
@@ -62,7 +63,7 @@ var _ = {};
         var item = collection[key];
         iterator(item, key, collection);
       }
-    };
+    }
   };
 
   // Returns the index at which value can be found in the array, or -1 if value
@@ -104,7 +105,7 @@ var _ = {};
     _.filter(collection, function(item, index){
       if (test.call(item, index)){
         result.push(item);
-      };
+      }
     });
 
     return result;
@@ -120,12 +121,12 @@ var _ = {};
       for (var j = 0; j < result.length; j++){
         if (array[i] === result[j]){
           notSeen = false;
-        };
-      };
+        }
+      }
       if (notSeen){
         result.push(array[i]);
       }
-    };
+    }
 
     return result;
   };
@@ -138,9 +139,11 @@ var _ = {};
     // the members, it also maintains an array of results.
 
     var result = [];
+    var key;
 
     if (Array.isArray(collection)){
-      for (var key = 0; key < collection.length; key++){
+
+      for (key = 0; key < collection.length; key++){
         var value = collection[key];
         result.push(iterator(value, key, collection));
       }
@@ -180,7 +183,7 @@ var _ = {};
         return functionOrKey.apply(value, args);
       } else {
         return value[functionOrKey].apply(value, args);
-      };
+      }
     });
   };
 
@@ -233,7 +236,7 @@ var _ = {};
     return _.reduce(collection, function(isTrue, item){
       if (!isTrue){
         return false;
-      };
+      }
 
       if (!iterator){
         return item;
